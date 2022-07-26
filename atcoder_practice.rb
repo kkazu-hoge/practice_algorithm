@@ -3,7 +3,7 @@ N = gets.to_i
 result_cnt = 0
 arry = gets.split(" ").map{|m| m.to_i}
 
-while true do
+loop do
   cnt = 0
   #配列内の要素の偶数判定
   arry.each do |a|
@@ -60,4 +60,38 @@ end
 
 puts cnt
 
+#ABC083B - Some Sums##################
 
+arry = gets.split(" ").map{|m| m.to_i}
+N = arry[0]
+A = arry[1]
+B = arry[2]
+total_value = 0
+
+for i in 1..N
+  sum = i.to_s.split("").map{|m| m.to_i}.sum
+  if sum >= A && B >= sum
+  	total_value += i
+  end
+end
+
+puts total_value
+
+
+#ABC088B - Card Game for Two##########
+N = gets.to_i
+arry = gets.split(" ").map{|m| m.to_i}
+alice_sum = 0
+bob_sum = 0
+
+for i in 1..N
+  unless i % 2 == 0
+    alice_sum +=arry.max
+    arry.delete_at(arry.index(arry.max))
+  else
+    bob_sum +=arry.max
+    arry.delete_at(arry.index(arry.max))
+  end
+end
+
+puts alice_sum - bob_sum
